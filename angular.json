@@ -5,7 +5,14 @@
   "projects": {
     "itemisag-tax-sales": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -97,5 +104,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "cf3cff0f-ea41-4d6e-832d-29a2934a078c"
   }
 }

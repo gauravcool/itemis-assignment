@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="page">
+    <div class="logo"></div>
+    <div class="form">
+      <form class="formTax" [formGroup]="taxForm">
+        <div class="heading">SALES TAX CALCULATOR</div>
+        <div class="title">
+          <div class="title-block">
+            <div class="form-input-position">
+              <label for="item">Add Item</label>
+              <input formControlName="inputGood" type="text">
+              <button mat-raised-button [disabled]="taxForm.invalid" class="button add" (click)="addItem()">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="button-parent">
+          <button mat-raised-button [disabled]="itemArray.length == 0" color="primary" class="button submit" (click)="onSubmit()">Submit</button>
+        </div>
+      </form>
+    </div>
+    <br />
+    <div *ngIf="currentValue" class="current">
+      <div>List of added items:</div>
+      <ul *ngFor="let item of itemArray">
+        <li>{{item}}</li>
+      </ul>
+
+    </div>
+    <br />
+    <app-display-result *ngIf="salesTaxes != 0 && totalTax != 0" [salesTaxes]="salesTaxes" [totalTax]="totalTax"></app-display-result>
+  </div>
+
+</div>
