@@ -44,6 +44,13 @@ Output 3:
 Sales Taxes: 6.70
 Total: 74.68
 
+## Screenshots
+![Alt text](https://github.com/gauravcool/itemis-assignment/blob/master/src/assets/Screenshot%202023-01-07%20at%207.57.24%20PM.png "Optional title")
+
+![Alt text](https://github.com/gauravcool/itemis-assignment/blob/master/src/assets/Screenshot%202023-01-07%20at%208.26.30%20PM.png "Optional title")
+
+![Alt text](https://github.com/gauravcool/itemis-assignment/blob/master/src/assets/Screenshot%202023-01-07%20at%208.26.40%20PM.png "Optional title")
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
