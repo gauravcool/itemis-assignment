@@ -19,12 +19,13 @@ export class SalesTaxComponent implements OnInit {
   initialRate: number = 10;
   initialImportedRate: number = 5;
   itemArray: any = [];
-  salesTaxes: number = 0;
-  totalTax: number = 0;
+  salesTaxes: any = null;
+  totalTax: any = null;
   changedInput: any;
   item: any;
   good: any;
   currentValue: any;
+  resultList: any = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -59,6 +60,8 @@ export class SalesTaxComponent implements OnInit {
           (this.changedInput.cost + this.roundTax( this.computeTax(this.changedInput.cost,
             this.exemptedGoods( this.changedInput.article ), this.changedInput.import ))
           ) * 100 ) / 100;
+
+      this.resultList.push(`${this.changedInput.total} ${this.changedInput.article} : ${this.good.displayPrice}`);
 
       this.salesTaxes += this.good.displayPrice - this.changedInput.cost;
       this.totalTax += this.good.displayPrice;

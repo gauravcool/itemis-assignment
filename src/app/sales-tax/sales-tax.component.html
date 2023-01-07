@@ -1,7 +1,7 @@
 <div class="container">
   <div class="page">
     <div class="logo"></div>
-    <div class="form">
+    <div class="form" *ngIf="salesTaxes == null && totalTax == null">
       <form class="formTax" [formGroup]="taxForm">
         <div class="heading">SALES TAX CALCULATOR</div>
         <div class="title">
@@ -17,17 +17,19 @@
           <button mat-raised-button [disabled]="itemArray.length == 0" color="primary" class="button submit" (click)="onSubmit()">Submit</button>
         </div>
       </form>
-    </div>
-    <br />
-    <div *ngIf="currentValue" class="current">
-      <div>List of added items:</div>
-      <ul *ngFor="let item of itemArray">
-        <li>{{item}}</li>
-      </ul>
+      <br />
+      <div *ngIf="currentValue" class="current">
+        <div>List of added items:</div>
+        <ul *ngFor="let item of itemArray">
+          <li>{{item}}</li>
+        </ul>
 
+      </div>
+      <br />
     </div>
     <br />
-    <app-display-result *ngIf="salesTaxes != 0 && totalTax != 0" [salesTaxes]="salesTaxes" [totalTax]="totalTax"></app-display-result>
+
+    <app-display-result *ngIf="salesTaxes != null && totalTax != null" [salesTaxes]="salesTaxes" [totalTax]="totalTax" [resultList]="resultList"></app-display-result>
   </div>
 
 </div>

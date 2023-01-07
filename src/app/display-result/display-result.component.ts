@@ -9,6 +9,7 @@ export class DisplayResultComponent implements OnInit {
 
   @Input() salesTaxes!: number;
   @Input() totalTax!: number;
+  @Input() resultList!: any;
   constructor() { }
 
   ngOnInit(): void {

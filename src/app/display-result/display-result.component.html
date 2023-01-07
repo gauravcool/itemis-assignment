@@ -1,4 +1,10 @@
 <div class="result">
+  <h1>SUMMARY</h1>
+  <br />
+  <div *ngFor="let item of resultList">
+    <p>{{item}}</p>
+  </div>
+  <br />
   <h3>Sales Taxes: {{salesTaxes}}</h3>
   <h3>Total: {{totalTax}}</h3>
 </div>
