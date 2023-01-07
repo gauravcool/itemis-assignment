@@ -49,6 +49,7 @@ export class SalesTaxComponent implements OnInit {
 
     this.itemArray.forEach((i: any) => {
       this.changedInput = this.transformInput(i);
+
       this.good = {
         cost: this.changedInput.cost,
         import: this.changedInput.import,
@@ -77,39 +78,31 @@ export class SalesTaxComponent implements OnInit {
     return (amount * tax) / 100;
   }
 
-  roundTax(tax: any) {
-    const rounded = Math.ceil(tax * 10) / 10;
-    const lastDigit = Math.trunc(tax * 100) % 10;
+  roundTax(input: any) {
+    const endDigit: any = Math.trunc(input * 100) % 10;
 
-    return lastDigit < 5 && lastDigit != 0 ? rounded - 0.05 : rounded;
+    const roundedOfValue: any = Math.ceil(input * 10) / 10;
+
+    return ((endDigit < 5) && (endDigit != 0)) ? (roundedOfValue - 0.05) : roundedOfValue;
   }
 
-  transformInput(input: any) {
-    let total = Number(input.substring(0, input.indexOf(" ")));
-    const imported = input.includes("import");
-    let article = input
-      .replace(RegExp(/[0-9.]|at\s|imported/g), "")
-      .trim()
-      .replace(/\s+/g, " ");
-    let cost = Number(input.substring(input.indexOf("at ") + 2).trim());
+  transformInput(fieldValue: any) {
 
-    if (isNaN(total)) {
-      total = 1;
-    }
+    let total: any = Number(fieldValue.substring(0, fieldValue.indexOf(" ")));
 
-    if (!article) {
-      article = "unknown";
-    }
+    let imported: any = fieldValue.includes("import");
 
-    if (isNaN(cost)) {
-      cost = 0;
-    }
+    let cost: any = Number(fieldValue.substring(fieldValue.indexOf("at ") + 2).trim());
 
-    return {
-      total: total,
-      import: imported,
-      article: article,
-      cost: cost,
+    let article: any = fieldValue.replace(RegExp(/[0-9.]|at\s|imported/g), "").trim().replace(/\s+/g, " ");
+
+    total = isNaN(total) ? 1 : total;
+
+    article = !article ? "unknown" : article;
+
+    cost = isNaN(cost) ? 0 : cost;
+
+    return { total: total, import: imported, article: article, cost: cost,
     };
   }
 }
